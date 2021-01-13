@@ -31,14 +31,9 @@ export default function Navigation() {
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav style={{ width: "100%" }} fill>
           <NavbarItem path="/" linkText="Home" />
+          {token ? <NavbarItem path="/user" linkText="Statistic" /> : null}
           {token ? (
-            <NavbarItem path="/admin/users" linkText="Manage Users" />
-          ) : null}
-          {token ? (
-            <NavbarItem
-              path="/admin/reservations"
-              linkText="View Reservations"
-            />
+            <NavbarItem path="/addcountry" linkText="Add Country" />
           ) : null}
 
           {loginLogoutControls}
