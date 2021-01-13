@@ -1,23 +1,35 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import { Switch, Route } from "react-router-dom";
+import Navigation from "./components/Navigation";
+import Loading from "./components/Loading";
+import Home from "./pages/Home";
+import SignUp from "./pages/SignUp";
+import Login from "./pages/Login";
+import Statistic from "./pages/Statistic";
+import AddCountry from "./pages/AddCountry";
+import { useDispatch, useSelector } from "react-redux";
+import { selectAppLoading } from "./store/appState/selectors";
+import { getUserWithStoredToken } from "./store/user/actions";
+import { useEffect } from "react";
 
 function App() {
+  const dispatch = useDispatch();
+  const isLoading = useSelector(selectAppLoading);
+
+  useEffect(() => {
+    dispatch(getUserWithStoredToken());
+  }, [dispatch]);
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Navigation />
+      {isLoading ? <Loading /> : null}
+      <Switch>
+        <Route exact path="/" component={Home} />
+        <Route path="/signup" component={SignUp} />
+        <Route path="/login" component={Login} />
+        <Route path="/statistic" component={Statistic} />
+        <Route path="/addcountry" component={AddCountry} />
+      </Switch>
     </div>
   );
 }
