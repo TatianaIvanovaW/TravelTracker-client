@@ -7,6 +7,7 @@ import SignUp from "./pages/SignUp";
 import Login from "./pages/Login";
 import Statistic from "./pages/Statistic";
 import AddCountry from "./pages/AddCountry";
+import Country from "./pages/Country";
 import { useDispatch, useSelector } from "react-redux";
 import { selectAppLoading } from "./store/appState/selectors";
 import { getUserWithStoredToken } from "./store/user/actions";
@@ -29,6 +30,7 @@ function App() {
         <Route path="/login" component={Login} />
         <Route path="/user" component={Statistic} />
         <Route path="/addcountry" component={AddCountry} />
+        <Route path="/country/:id" component={Country} />
       </Switch>
     </div>
   );
