@@ -1,14 +1,6 @@
 import React, { memo } from "react";
-
-import {
-  ZoomableGroup,
-  ComposableMap,
-  Geographies,
-  Geography,
-} from "react-simple-maps";
-
-const geoUrl =
-  "https://raw.githubusercontent.com/zcreativelabs/react-simple-maps/master/topojson-maps/world-110m.json";
+import { geoUrl } from "../../config/constants";
+import { ComposableMap, Geographies, Geography } from "react-simple-maps";
 
 const MapChart = ({ setTooltipContent }) => {
   return (
