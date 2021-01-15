@@ -1,16 +1,15 @@
 import React from "react";
+import MapChartUser from "../../components/Map/MapChartUser";
+import "./styles.css";
 import ReactTooltip from "react-tooltip";
 import { useState } from "react";
 
-import "./styles.css";
-
-import MapChart from "../../components/Map/MapChartMain";
-
-export default function Home() {
+export default function Statistic() {
   const [content, setContent] = useState("");
   return (
     <div>
-      <MapChart setTooltipContent={setContent} />
+      user info
+      <MapChartUser setTooltipContent={setContent} />
       <ReactTooltip>{content}</ReactTooltip>
     </div>
   );

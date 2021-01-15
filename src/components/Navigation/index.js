@@ -7,12 +7,13 @@ import { selectToken } from "../../store/user/selectors";
 import NavbarItem from "./NavbarItem";
 import LoggedIn from "./LoggedIn";
 import LoggedOut from "./LoggedOut";
-
+// import { useLocation } from "react-router-dom";
 import { useEffect } from "react";
 import { getUserWithStoredToken } from "../../store/user/actions";
 
 export default function Navigation() {
   const token = useSelector(selectToken);
+  // const location = useLocation();
 
   const dispatch = useDispatch();
 
