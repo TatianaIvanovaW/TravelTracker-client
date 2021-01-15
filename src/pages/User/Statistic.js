@@ -21,6 +21,7 @@ export default function Statistic() {
         id
         name
         countries {
+          name
           code
         }
       }
