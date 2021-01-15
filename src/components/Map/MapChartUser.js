@@ -3,17 +3,21 @@ import { geoUrl } from "../../config/constants";
 import { ComposableMap, Geographies, Geography } from "react-simple-maps";
 import { Link } from "react-router-dom";
 
-const MapChart = ({ setTooltipContent }) => {
+const MapChart = ({ setTooltipContent, countries }) => {
+  if (countries) console.log(`i am the map`, countries);
+
   return (
     <>
       <ComposableMap data-tip="" projectionConfig={{ scale: 200 }}>
         <Geographies geography={geoUrl}>
           {({ geographies }) =>
             geographies.map((geo) => {
-              const { NAME } = geo.properties;
+              const { NAME, ISO_A3 } = geo.properties;
+              const d = countries ? countries.includes(ISO_A3) : null;
               return (
-                <Link key={NAME} to={`/country/${NAME}`}>
+                <Link key={NAME} to={`/country/${ISO_A3}`}>
                   <Geography
+                    className="country"
                     key={geo.rsmKey}
                     geography={geo}
                     onMouseEnter={() => {
@@ -24,15 +28,14 @@ const MapChart = ({ setTooltipContent }) => {
                     }}
                     style={{
                       default: {
-                        fill: "#D6D6DA",
                         outline: "none",
-                        border: "2px solid black",
+                        fill: d ? "#1E3C00" : "#D7E1E9",
                       },
                       hover: {
-                        fill: "#878787",
-
-                        outline: "none",
+                        stroke: "black",
+                        fill: d ? "#1E3C00" : "#D7E1E9",
                       },
+
                       pressed: {
                         fill: "#20B2AA",
                         outline: "none",
