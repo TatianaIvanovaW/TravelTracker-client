@@ -4,7 +4,7 @@ import { useState } from "react";
 // import { useQuery, gql } from "@apollo/client";
 import "./styles.css";
 
-import MapChart from "../../components/Map/MapChart";
+import MapChart from "../../components/Map/MapChartMain";
 
 export default function Home() {
   // const { loading, error, data } = useQuery(gql`

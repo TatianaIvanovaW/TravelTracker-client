@@ -5,7 +5,7 @@ import Loading from "./components/Loading";
 import Home from "./pages/home/Home";
 import SignUp from "./pages/SignUp";
 import Login from "./pages/Login";
-import Statistic from "./pages/Statistic";
+import Statistic from "./pages/User/Statistic";
 import AddCountry from "./pages/AddCountry";
 import Country from "./pages/Country";
 import { useDispatch, useSelector } from "react-redux";
