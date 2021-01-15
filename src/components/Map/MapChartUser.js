@@ -4,8 +4,6 @@ import { ComposableMap, Geographies, Geography } from "react-simple-maps";
 import { Link } from "react-router-dom";
 
 const MapChart = ({ setTooltipContent, countries }) => {
-  if (countries) console.log(`i am the map`, countries);
-
   return (
     <>
       <ComposableMap data-tip="" projectionConfig={{ scale: 200 }}>

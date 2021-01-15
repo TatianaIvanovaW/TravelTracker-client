@@ -4,6 +4,7 @@ import "./styles.css";
 import ReactTooltip from "react-tooltip";
 import { useState, useEffect } from "react";
 import { useQuery, gql } from "@apollo/client";
+import { Col } from "react-bootstrap";
 
 import { useSelector } from "react-redux";
 
@@ -18,8 +19,6 @@ export default function Statistic() {
   const { data } = useQuery(gql`
     query GetUser {
       user(id: ${user.id}) {
-        id
-        name
         countries {
           name
           code
@@ -41,13 +40,28 @@ export default function Statistic() {
   return (
     <div>
       <div>
-        {trav && !trav.user.countries.length ? "here is hothing" : null}
+        {trav && trav.user.countries.length
+          ? `visited countries : ${trav.user.countries.length}`
+          : null}
       </div>
-      <MapChartUser
-        countries={trav ? visits : null}
-        setTooltipContent={setContent}
-      />
-      <ReactTooltip>{content}</ReactTooltip>
+
+      <Col style={{ textAlign: "left" }}>
+        List of countries:
+        <ul>
+          {trav
+            ? trav.user.countries.map((c) => {
+                return <li key={c.name}>{c.name}</li>;
+              })
+            : null}
+        </ul>
+      </Col>
+      <Col>
+        <MapChartUser
+          countries={trav ? visits : null}
+          setTooltipContent={setContent}
+        />
+        <ReactTooltip>{content}</ReactTooltip>
+      </Col>
     </div>
   );
 }
