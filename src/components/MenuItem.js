@@ -18,7 +18,7 @@ const variants = {
   },
 };
 
-export default function MenuItem({ i }) {
+export default function MenuItem({ name }) {
   return (
     <motion.li
       variants={variants}
@@ -26,7 +26,7 @@ export default function MenuItem({ i }) {
       whileTap={{ scale: 0.95 }}
     >
       <div className="icon-placeholder" />
-      <div className="text-placeholder">{i}</div>
+      <div className="text-placeholder">{name}</div>
     </motion.li>
   );
 }

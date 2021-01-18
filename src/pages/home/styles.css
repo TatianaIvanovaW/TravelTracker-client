@@ -8,8 +8,7 @@ body {
   padding: 0 1.5rem;
 }
 
-/* svg {
-  width: 1000px;
-  height: 500px;
-  margin: 0;
-} */
+svg {
+  margin: 20px;
+  box-shadow: 3px 3px 20px 3px #888888;
+}

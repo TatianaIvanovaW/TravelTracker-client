@@ -10,7 +10,12 @@ body {
   background: #fff;
 } */
 
-button {
+.toggle {
+  margin: 0;
+  box-shadow: none;
+}
+
+.click {
   outline: none !important;
   border: none;
   -webkit-user-select: none;
@@ -35,16 +40,19 @@ li {
 }
 
 ul {
-  padding: 25px;
+  padding: 19px;
   position: absolute;
   top: 150px;
   width: 230px;
   z-index: 1;
+  height: 650px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
 }
 
 li {
   list-style: none;
-
   display: flex;
   align-items: center;
   cursor: pointer;
@@ -80,3 +88,11 @@ li {
   align-items: center;
   cursor: pointer;
 } */
+
+.first {
+  background-color: aliceblue;
+}
+
+.second {
+  background-color: black;
+}

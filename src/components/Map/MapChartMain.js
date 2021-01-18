@@ -14,7 +14,7 @@ const MapChart = ({ setTooltipContent }) => {
   const [array, set_array] = useState([]);
   useEffect(() => {
     if (data) set_countries(data.countryUsers);
-    console.log(`hey from component`, countries);
+
     const newArray = countries
       ? countries.map((country) => {
           return {
@@ -23,7 +23,7 @@ const MapChart = ({ setTooltipContent }) => {
           };
         })
       : null;
-    console.log(`and i am a new array`, newArray);
+
     set_array(newArray);
   }, [countries, data]);
   return (

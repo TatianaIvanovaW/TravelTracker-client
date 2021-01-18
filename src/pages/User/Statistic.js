@@ -9,7 +9,6 @@ import { useSelector, useDispatch } from "react-redux";
 import { fetchUserWithCountries } from "../../store/country/action";
 import { selectUserVisits } from "../../store/country/selector";
 import ListVisits from "../../components/List.js";
-import MenuToggle from "../../components/MenuToggle";
 
 export default function Statistic() {
   const result = useSelector(selectUserVisits);

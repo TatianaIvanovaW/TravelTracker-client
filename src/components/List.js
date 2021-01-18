@@ -1,6 +1,4 @@
 import React from "react";
-// import { Col } from "react-bootstrap";
-
 import { useRef } from "react";
 import { motion, useCycle } from "framer-motion";
 import useDimensions from "./use-demension.js";
@@ -45,18 +43,6 @@ export default function ListVisits({ info }) {
         <Navigation info={info} />
         <MenuToggle toggle={() => toggleOpen()} />
       </motion.nav>
-      {/* <Col style={{ textAlign: "left" }}>
-        List of countries:
-        <ul>
-          {data
-            ? data.countries.map((c, i) => {
-                return codeList.includes(c.code) ? (
-                  <li key={c.name}>{c.name}</li>
-                ) : null;
-              })
-            : null}
-        </ul>
-      </Col> */}
     </div>
   );
 }
