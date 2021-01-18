@@ -32,9 +32,6 @@ export default function Navigation() {
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav style={{ width: "100%" }} fill>
           {token ? <NavbarItem path="/user" linkText="Statistic" /> : null}
-          {token ? (
-            <NavbarItem path="/addcountry" linkText="Add Country" />
-          ) : null}
 
           {loginLogoutControls}
         </Nav>

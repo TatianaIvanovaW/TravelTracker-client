@@ -3,65 +3,47 @@ import MapChartUser from "../../components/Map/MapChartUser";
 import "./styles.css";
 import ReactTooltip from "react-tooltip";
 import { useState, useEffect } from "react";
-import { useQuery, gql } from "@apollo/client";
 import { Col } from "react-bootstrap";
-
-import { useSelector } from "react-redux";
-
-import { selectUser } from "../../store/user/selectors";
+import AddCountry from "../AddCountry";
+import { useSelector, useDispatch } from "react-redux";
+import { fetchUserWithCountries } from "../../store/country/action";
+import { selectUserVisits } from "../../store/country/selector";
 
 export default function Statistic() {
-  const user = useSelector(selectUser);
-  const [trav, set_trav] = useState("");
-  const [visits, set_visits] = useState([]);
-  const [content, setContent] = useState("");
+  const result = useSelector(selectUserVisits);
 
-  const { data } = useQuery(gql`
-    query GetUser {
-      user(id: ${user.id}) {
-        countries {
-          name
-          code
-        }
-      }
-    }
-  `);
+  const [content, setContent] = useState("");
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    set_trav(data);
-    if (trav) {
-      const array = trav.user.countries.map((country) => {
-        return country.code;
-      });
-      set_visits(array);
-    }
-  }, [data, trav]);
-
+    dispatch(fetchUserWithCountries());
+  }, [dispatch]);
+  if (!result.data) return <p>Loading...</p>;
   return (
     <div>
       <div>
-        {trav && trav.user.countries.length
-          ? `visited countries : ${trav.user.countries.length}`
+        {result && result.data && result.data.length
+          ? `visited countries : ${result.data.length}`
           : null}
       </div>
-
       <Col style={{ textAlign: "left" }}>
         List of countries:
         <ul>
-          {trav
-            ? trav.user.countries.map((c) => {
-                return <li key={c.name}>{c.name}</li>;
+          {result && result.data
+            ? result.data.map((c, i) => {
+                return <li key={i}>{c.countryId}</li>;
               })
             : null}
         </ul>
       </Col>
       <Col>
         <MapChartUser
-          countries={trav ? visits : null}
+          list={result ? result.data : null}
           setTooltipContent={setContent}
         />
         <ReactTooltip>{content}</ReactTooltip>
       </Col>
+      <AddCountry />
     </div>
   );
 }

@@ -6,7 +6,7 @@ import Home from "./pages/home/Home";
 import SignUp from "./pages/SignUp";
 import Login from "./pages/Login";
 import Statistic from "./pages/User/Statistic";
-import AddCountry from "./pages/AddCountry";
+
 import Country from "./pages/Country";
 import { useDispatch, useSelector } from "react-redux";
 import { selectAppLoading } from "./store/appState/selectors";
@@ -29,7 +29,7 @@ function App() {
         <Route path="/signup" component={SignUp} />
         <Route path="/login" component={Login} />
         <Route path="/user" component={Statistic} />
-        <Route path="/addcountry" component={AddCountry} />
+
         <Route path="/country/:id" component={Country} />
       </Switch>
     </div>

@@ -3,11 +3,17 @@ import { geoUrl } from "../../config/constants";
 import { ComposableMap, Geographies, Geography } from "react-simple-maps";
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
-// ISO_A3;
+import { GET_ALL_COUNTRIES } from "../../components/graphql/queries";
 
-const MapChart = ({ setTooltipContent, countries }) => {
+import { useSubscription } from "@apollo/react-hooks";
+
+const MapChart = ({ setTooltipContent }) => {
+  const [countries, set_countries] = useState([]);
+  const { data } = useSubscription(GET_ALL_COUNTRIES);
+
   const [array, set_array] = useState([]);
   useEffect(() => {
+    if (data) set_countries(data.countryUsers);
     console.log(`hey from component`, countries);
     const newArray = countries
       ? countries.map((country) => {
@@ -19,7 +25,7 @@ const MapChart = ({ setTooltipContent, countries }) => {
       : null;
     console.log(`and i am a new array`, newArray);
     set_array(newArray);
-  }, [countries]);
+  }, [countries, data]);
   return (
     <>
       <ComposableMap data-tip="" projectionConfig={{ scale: 200 }}>

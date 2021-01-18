@@ -3,7 +3,12 @@ import { geoUrl } from "../../config/constants";
 import { ComposableMap, Geographies, Geography } from "react-simple-maps";
 import { Link } from "react-router-dom";
 
-const MapChart = ({ setTooltipContent, countries }) => {
+const MapChart = ({ setTooltipContent, list }) => {
+  const countries = list
+    ? list.map((c) => {
+        return c.countryId;
+      })
+    : null;
   return (
     <>
       <ComposableMap data-tip="" projectionConfig={{ scale: 200 }}>

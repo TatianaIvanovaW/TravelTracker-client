@@ -1,23 +1,18 @@
 import React from "react";
 import { Form, Button } from "react-bootstrap";
-import { useQuery, gql } from "@apollo/client";
 import { useState, useEffect } from "react";
 import "./addcountry.css";
 import { useDispatch } from "react-redux";
 import { addCountry } from "../store/country/action";
+import { ALL_COUNTRIES } from "../components/graphql/queries";
 
-export default function AddCountry() {
+import { useSubscription } from "@apollo/react-hooks";
+
+export default function AddCountry({ user }) {
   const [list, set_list] = useState([]);
   const [country, set_country] = useState("");
   const dispatch = useDispatch();
-  const { data } = useQuery(gql`
-    query GetCountries {
-      countries {
-        name
-        code
-      }
-    }
-  `);
+  const { data } = useSubscription(ALL_COUNTRIES);
 
   useEffect(() => {
     if (data) set_list(data.countries);
@@ -47,7 +42,7 @@ export default function AddCountry() {
           onClick={(e) => {
             console.log(country);
             e.preventDefault();
-            dispatch(addCountry(country));
+            dispatch(addCountry(country, user));
           }}
         >
           Add
