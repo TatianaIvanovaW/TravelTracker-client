@@ -10,6 +10,7 @@ import LoggedOut from "./LoggedOut";
 // import { useLocation } from "react-router-dom";
 import { useEffect } from "react";
 import { getUserWithStoredToken } from "../../store/user/actions";
+import { motion } from "framer-motion";
 
 export default function Navigation() {
   const token = useSelector(selectToken);
@@ -25,9 +26,12 @@ export default function Navigation() {
 
   return (
     <Navbar bg="light" expand="lg">
-      <Navbar.Brand as={NavLink} to="/">
-        Travel Tracker
-      </Navbar.Brand>
+      <motion.div whileHover={{ scale: 1.2 }} whileTap={{ scale: 0.8 }}>
+        {" "}
+        <Navbar.Brand as={NavLink} to="/">
+          Travel Tracker
+        </Navbar.Brand>
+      </motion.div>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav style={{ width: "100%" }} fill>
