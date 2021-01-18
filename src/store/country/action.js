@@ -2,7 +2,7 @@ import axios from "axios";
 import { selectToken } from "../user/selectors";
 import { apiUrl } from "../../config/constants";
 
-export const addCountry = (countryCode, user) => {
+export const addCountry = (countryCode) => {
   return async (dispatch, getState) => {
     try {
       const token = selectToken(getState());

@@ -8,6 +8,7 @@ import AddCountry from "../AddCountry";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchUserWithCountries } from "../../store/country/action";
 import { selectUserVisits } from "../../store/country/selector";
+import ListVisits from "../../components/List.js";
 
 export default function Statistic() {
   const result = useSelector(selectUserVisits);
@@ -26,16 +27,7 @@ export default function Statistic() {
           ? `visited countries : ${result.data.length}`
           : null}
       </div>
-      <Col style={{ textAlign: "left" }}>
-        List of countries:
-        <ul>
-          {result && result.data
-            ? result.data.map((c, i) => {
-                return <li key={i}>{c.countryId}</li>;
-              })
-            : null}
-        </ul>
-      </Col>
+      <ListVisits info={result ? result.data : null} />
       <Col>
         <MapChartUser
           list={result ? result.data : null}
