@@ -1,16 +1,16 @@
 import React from "react";
-import Navbar from "react-bootstrap/Navbar";
-import Nav from "react-bootstrap/Nav";
+
 import { NavLink } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { selectToken } from "../../store/user/selectors";
-import NavbarItem from "./NavbarItem";
+
 import LoggedIn from "./LoggedIn";
 import LoggedOut from "./LoggedOut";
 // import { useLocation } from "react-router-dom";
 import { useEffect } from "react";
 import { getUserWithStoredToken } from "../../store/user/actions";
-import { motion } from "framer-motion";
+
+import { MDBNav } from "mdbreact";
 
 export default function Navigation() {
   const token = useSelector(selectToken);
@@ -25,20 +25,27 @@ export default function Navigation() {
   const loginLogoutControls = token ? <LoggedIn /> : <LoggedOut />;
 
   return (
-    <Navbar bg="light" expand="lg">
-      <motion.div whileHover={{ scale: 1.2 }} whileTap={{ scale: 0.8 }}>
-        <Navbar.Brand as={NavLink} to="/">
-          Travel Tracker
-        </Navbar.Brand>
-      </motion.div>
-      <Navbar.Toggle aria-controls="basic-navbar-nav" />
-      <Navbar.Collapse id="basic-navbar-nav">
-        <Nav style={{ width: "100%" }} fill>
-          {token ? <NavbarItem path="/user" linkText="Statistic" /> : null}
 
-          {loginLogoutControls}
-        </Nav>
-      </Navbar.Collapse>
-    </Navbar>
+    <div
+      style={{ boxShadow: "0px 5px 15px 1px #DCDCDC", marginBottom: "15px" }}
+    >
+      <MDBNav color="peach-gradient" className="font-weight-bold">
+        <NavLink style={{ margin: "10px", color: "black" }} as={NavLink} to="/">
+          Travel Tracker
+        </NavLink>
+
+        {token ? (
+          <NavLink
+            style={{ margin: "10px", color: "black" }}
+            as={NavLink}
+            to="/user"
+          >
+            My profile
+          </NavLink>
+        ) : null}
+
+        {loginLogoutControls}
+      </MDBNav>
+    </div>
   );
 }

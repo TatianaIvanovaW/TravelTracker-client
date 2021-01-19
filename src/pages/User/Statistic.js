@@ -39,6 +39,7 @@ export default function Statistic() {
           list={result ? result.data : null}
           setTooltipContent={setContent}
         />
+
         <ReactTooltip>{content}</ReactTooltip>
       </Col>
       <AddCountry />

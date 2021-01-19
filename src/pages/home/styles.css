@@ -9,10 +9,10 @@ body {
 }
 
 svg {
-  width: 1400px;
-  height: 740px;
-  margin: 20px;
-  margin-left: 0px;
+  width: 900px;
+  height: 550px;
+  margin: 10px;
+
   z-index: 2;
   box-shadow: 3px 3px 20px 3px #888888;
 }
