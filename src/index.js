@@ -10,7 +10,7 @@ import { ApolloProvider } from "@apollo/react-hooks";
 import { ApolloClient, InMemoryCache } from "@apollo/client";
 
 const client = new ApolloClient({
-  uri: "https://traveltrackerserver.herokuapp.com/",
+  uri: "https://traveltrackerserver.herokuapp.com/graphql",
   cache: new InMemoryCache(),
 });
 
