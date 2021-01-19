@@ -25,6 +25,7 @@ export default function Navigation() {
   const loginLogoutControls = token ? <LoggedIn /> : <LoggedOut />;
 
   return (
+
     <div
       style={{ boxShadow: "0px 5px 15px 1px #DCDCDC", marginBottom: "15px" }}
     >
