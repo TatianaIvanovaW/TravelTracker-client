@@ -39,9 +39,16 @@ export default function Navigation() {
 
   return (
     <div
-      style={{ boxShadow: "0px 5px 15px 1px #DCDCDC", marginBottom: "15px" }}
+      style={{
+        boxShadow: "0px 5px 15px 1px #DCDCDC",
+        marginBottom: "15px",
+      }}
     >
-      <MDBNav color={color} className="font-weight-bold">
+      <MDBNav
+        style={{ padding: "20px" }}
+        color={color}
+        className="font-weight-bold"
+      >
         <NavLink style={{ margin: "10px", color: "black" }} as={NavLink} to="/">
           Travel Tracker
         </NavLink>
