@@ -27,7 +27,6 @@ export default function Navigation() {
   return (
     <Navbar bg="light" expand="lg">
       <motion.div whileHover={{ scale: 1.2 }} whileTap={{ scale: 0.8 }}>
-        {" "}
         <Navbar.Brand as={NavLink} to="/">
           Travel Tracker
         </Navbar.Brand>
