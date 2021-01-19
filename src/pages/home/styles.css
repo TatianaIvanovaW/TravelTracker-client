@@ -5,11 +5,14 @@ html {
 
 body {
   margin: 0;
-  padding: 0 1.5rem;
+  padding: 0 0;
 }
 
 svg {
-  width: 1000px;
-  height: 500px;
-  margin: 0;
+  width: 1400px;
+  height: 740px;
+  margin: 20px;
+  margin-left: 0px;
+  z-index: 2;
+  box-shadow: 3px 3px 20px 3px #888888;
 }

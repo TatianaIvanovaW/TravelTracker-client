@@ -42,7 +42,7 @@ export default function AddCountry({ user }) {
           onClick={(e) => {
             console.log(country);
             e.preventDefault();
-            dispatch(addCountry(country, user));
+            dispatch(addCountry(country));
           }}
         >
           Add
