@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from "react";
-import Form from "react-bootstrap/Form";
-import Container from "react-bootstrap/Container";
-import Button from "react-bootstrap/Button";
+
 import { login } from "../../store/user/actions";
 import { selectToken } from "../../store/user/selectors";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, Link } from "react-router-dom";
-import { Col } from "react-bootstrap";
+
+import { MDBContainer, MDBRow, MDBCol, MDBBtn } from "mdbreact";
 
 export default function SignUp() {
   const [email, setEmail] = useState("");
@@ -32,39 +31,46 @@ export default function SignUp() {
   }
 
   return (
-    <Container>
-      <Form as={Col} md={{ span: 6, offset: 3 }} className="mt-5">
-        <h1 className="mt-5 mb-5">Login</h1>
-        <Form.Group controlId="formBasicEmail">
-          <Form.Label>Email address</Form.Label>
-          <Form.Control
-            value={email}
-            onChange={(event) => setEmail(event.target.value)}
-            type="email"
-            placeholder="Enter email"
-            required
-          />
-        </Form.Group>
+    <div>
+      <MDBContainer>
+        <MDBRow style={{ margin: "50px", justifyContent: "center" }}>
+          <MDBCol md="6">
+            <form>
+              <label htmlFor="defaultFormRegisterEmailEx" className="grey-text">
+                Your email
+              </label>
+              <input
+                style={{ fontFamily: "Fraunces, serif", fontWeight: "bold" }}
+                onChange={(event) => setEmail(event.target.value)}
+                type="email"
+                id="defaultFormRegisterEmailEx"
+                className="form-control"
+              />
+              <br />
 
-        <Form.Group controlId="formBasicPassword">
-          <Form.Label>Password</Form.Label>
-          <Form.Control
-            value={password}
-            onChange={(event) => setPassword(event.target.value)}
-            type="password"
-            placeholder="Password"
-            required
-          />
-        </Form.Group>
-        <Form.Group className="mt-5">
-          <Button variant="primary" type="submit" onClick={submitForm}>
-            Log in
-          </Button>
-        </Form.Group>
-        <Link to="/signup" style={{ textAlign: "center" }}>
-          Click here to sign up
-        </Link>
-      </Form>
-    </Container>
+              <label
+                htmlFor="defaultFormRegisterPasswordEx"
+                className="grey-text"
+              >
+                Your password
+              </label>
+              <input
+                style={{ fontFamily: "Fraunces, serif", fontWeight: "bold" }}
+                onChange={(event) => setPassword(event.target.value)}
+                type="password"
+                id="defaultFormRegisterPasswordEx"
+                className="form-control"
+              />
+              <div className="text-center mt-4">
+                <MDBBtn onClick={submitForm} color="unique" type="submit">
+                  Log In
+                </MDBBtn>
+              </div>
+            </form>
+          </MDBCol>
+        </MDBRow>
+        <Link to="/signup">Click here to sign up</Link>
+      </MDBContainer>
+    </div>
   );
 }
