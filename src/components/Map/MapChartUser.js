@@ -30,17 +30,17 @@ const MapChart = ({ setTooltipContent, list }) => {
                   style={{
                     default: {
                       outline: "none",
-                      fill: d ? "#1E3C00" : "#D7E1E9",
+                      fill: d ? "#303f9f" : "#D7E1E9",
                     },
                     hover: {
                       outline: "none",
                       stroke: "black",
-                      fill: d ? "#1E3C00" : "#D7E1E9",
+                      fill: d ? "#303f9f" : "#D7E1E9",
                     },
 
                     pressed: {
                       stroke: "black",
-                      fill: "#D7E1E9",
+                      fill: "#303f9f",
                       outline: "none",
                     },
                   }}

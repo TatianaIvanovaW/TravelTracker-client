@@ -23,25 +23,24 @@ export default function Statistic() {
   return (
     <div>
       <Row>
-        <Col>
+        <Col sm={4}>
           <ListVisits info={result ? result.data : null} />
-        </Col>{" "}
-        <Col>
+
           <div>
             {result && result.data && result.data.length
               ? `visited countries : ${result.data.length}`
               : null}
           </div>
         </Col>
-      </Row>
-      <Col>
-        <MapChartUser
-          list={result ? result.data : null}
-          setTooltipContent={setContent}
-        />
+        <Col sm={6}>
+          <MapChartUser
+            list={result ? result.data : null}
+            setTooltipContent={setContent}
+          />
 
-        <ReactTooltip>{content}</ReactTooltip>
-      </Col>
+          <ReactTooltip>{content}</ReactTooltip>
+        </Col>{" "}
+      </Row>
       <AddCountry />
     </div>
   );
