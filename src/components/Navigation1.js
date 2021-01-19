@@ -25,7 +25,9 @@ export default function Navigation({ info }) {
 
   return (
     <motion.ul variants={variants}>
+
       {data && codeList
+
         ? data.countries.map((c, i) => {
             return codeList.includes(c.code) ? (
               <MenuItem name={c.name} key={i} />

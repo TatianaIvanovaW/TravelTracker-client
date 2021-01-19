@@ -32,12 +32,12 @@ const MapChart = ({ setTooltipContent }) => {
         <Geographies geography={geoUrl}>
           {({ geographies }) =>
             geographies.map((geo) => {
-              const { NAME, ISO_A3 } = geo.properties;
+              const { NAME, ISO_A2, ISO_A3 } = geo.properties;
               const visits = array.find((c) => {
                 return c.code === ISO_A3 ? c.visits : null;
               });
               return (
-                <Link key={NAME} to={visits ? `/country/${NAME}` : `/`}>
+                <Link key={NAME} to={visits ? `/country/${ISO_A2}` : `/`}>
                   <Geography
                     key={geo.rsmKey}
                     geography={geo}
