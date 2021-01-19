@@ -11,8 +11,13 @@ body {
 } */
 
 .toggle {
-  margin: 0;
+  margin-left: -30px;
+  margin-top: 10px;
+
   box-shadow: none;
+  padding: 0;
+  width: 100px;
+  height: 35px;
 }
 
 .click {
@@ -28,9 +33,9 @@ body {
   width: 50px;
   height: 50px;
   border-radius: 50%;
+
   background: transparent;
   box-shadow: 1px 1px 5px 1px #888888;
-  margin-left: 10px;
 }
 
 ul,
@@ -42,9 +47,9 @@ li {
 ul {
   padding: 19px;
   position: absolute;
-  top: 150px;
+  top: 51px;
   width: 230px;
-  z-index: 1;
+  margin-left: -5px;
   height: 650px;
   display: flex;
   flex-direction: column;
@@ -72,27 +77,4 @@ li {
   width: 200px;
   height: 20px;
   flex: 1;
-}
-
-/* .refresh {
-  padding: 10px;
-
-  background: rgba(0, 0, 0, 0.4);
-  border-radius: 10px;
-  width: 20px;
-  height: 20px;
-  top: 10px;
-  right: 10px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-} */
-
-.first {
-  background-color: aliceblue;
-}
-
-.second {
-  background-color: black;
 }

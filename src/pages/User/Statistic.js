@@ -3,7 +3,7 @@ import MapChartUser from "../../components/Map/MapChartUser";
 import "./styles.css";
 import ReactTooltip from "react-tooltip";
 import { useState, useEffect } from "react";
-import { Col } from "react-bootstrap";
+import { Col, Row } from "react-bootstrap";
 import AddCountry from "../AddCountry";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchUserWithCountries } from "../../store/country/action";
@@ -22,13 +22,18 @@ export default function Statistic() {
   if (!result.data) return <p>Loading...</p>;
   return (
     <div>
-      <div>
-        {result && result.data && result.data.length
-          ? `visited countries : ${result.data.length}`
-          : null}
-      </div>
-
-      <ListVisits info={result ? result.data : null} />
+      <Row>
+        <Col>
+          <ListVisits info={result ? result.data : null} />
+        </Col>{" "}
+        <Col>
+          <div>
+            {result && result.data && result.data.length
+              ? `visited countries : ${result.data.length}`
+              : null}
+          </div>
+        </Col>
+      </Row>
       <Col>
         <MapChartUser
           list={result ? result.data : null}
