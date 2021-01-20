@@ -61,23 +61,9 @@ export const login = (email, password) => {
         password,
       });
 
-      if (response.data.accountBlocked) {
-        dispatch(
-          showMessageWithTimeout(
-            "danger",
-            false,
-            "Your account has been blocked!",
-            3000
-          )
-        );
-        dispatch(appDoneLoading());
-      } else {
-        dispatch(loginSuccess(response.data));
-        dispatch(
-          showMessageWithTimeout("success", false, "Welcome back!", 1500)
-        );
-        dispatch(appDoneLoading());
-      }
+      dispatch(loginSuccess(response.data));
+      dispatch(showMessageWithTimeout("info", false, "Welcome back!", 1500));
+      dispatch(appDoneLoading());
     } catch (error) {
       if (error.response) {
         console.log(error.response.data.message);

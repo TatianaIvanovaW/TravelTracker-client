@@ -41,11 +41,10 @@ export default function Navigation() {
     <div
       style={{
         boxShadow: "0px 5px 15px 1px #DCDCDC",
-        marginBottom: "15px",
       }}
     >
       <MDBNav
-        style={{ padding: "20px" }}
+        style={{ padding: "15px" }}
         color={color}
         className="font-weight-bold"
       >

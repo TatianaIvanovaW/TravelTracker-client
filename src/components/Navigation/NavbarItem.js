@@ -5,13 +5,16 @@ import { NavLink } from "react-router-dom";
 export default function NavbarItem(props) {
   return (
     <Nav.Item>
-      <Nav.Link
-        style={{ color: "black", marginRight: "0", marginLeft: "1150px" }}
-        as={NavLink}
-        to={props.path}
-      >
-        {props.linkText}
-      </Nav.Link>
+      <b>
+        {" "}
+        <Nav.Link
+          style={{ color: "black", marginRight: "0", marginLeft: "1150px" }}
+          as={NavLink}
+          to={props.path}
+        >
+          {props.linkText}
+        </Nav.Link>
+      </b>
     </Nav.Item>
   );
 }

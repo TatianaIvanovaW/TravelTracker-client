@@ -8,7 +8,7 @@ import AddCountry from "../AddCountry";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchUserWithCountries } from "../../store/country/action";
 import { selectUserVisits } from "../../store/country/selector";
-import ListVisits from "../../components/List.js";
+// import ListVisits from "../../components/List.js";
 
 export default function Statistic() {
   const result = useSelector(selectUserVisits);
@@ -21,11 +21,10 @@ export default function Statistic() {
   }, [dispatch]);
   if (!result.data) return <p>Loading...</p>;
   return (
-    <div>
+    <div style={{ marginTop: "15px" }}>
       <Row>
         <Col sm={4}>
-          <ListVisits info={result ? result.data : null} />
-
+          <AddCountry />
           <div>
             {result && result.data && result.data.length
               ? `visited countries : ${result.data.length}`
@@ -40,8 +39,8 @@ export default function Statistic() {
 
           <ReactTooltip>{content}</ReactTooltip>
         </Col>{" "}
-      </Row>
-      <AddCountry />
+      </Row>{" "}
+      {/* <ListVisits info={result ? result.data : null} /> */}
     </div>
   );
 }

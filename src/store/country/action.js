@@ -1,6 +1,7 @@
 import axios from "axios";
 import { selectToken } from "../user/selectors";
 import { apiUrl } from "../../config/constants";
+import { showMessageWithTimeout } from "../appState/actions";
 
 export const addCountry = (countryCode) => {
   return async (dispatch, getState) => {
@@ -19,6 +20,9 @@ export const addCountry = (countryCode) => {
     } catch (e) {
       console.log(e.message);
     }
+    dispatch(
+      showMessageWithTimeout("info", false, "Country added to the map!")
+    );
     dispatch(fetchUserWithCountries());
   };
 };
