@@ -2,10 +2,11 @@ import React from "react";
 import { Form, Button } from "react-bootstrap";
 import { useState, useEffect } from "react";
 import "./addcountry.css";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addCountry } from "../store/country/action";
 import { ALL_COUNTRIES } from "../components/graphql/queries";
-
+import { selectUserVisits } from "../store/country/selector";
+import { showMessageWithTimeout } from "../store/appState/actions";
 import { useSubscription } from "@apollo/react-hooks";
 
 export default function AddCountry({ user }) {
@@ -13,14 +14,14 @@ export default function AddCountry({ user }) {
   const [country, set_country] = useState("");
   const dispatch = useDispatch();
   const { data } = useSubscription(ALL_COUNTRIES);
-
+  const visits = useSelector(selectUserVisits);
+  if (visits) console.log(`visits isists fkgrjghstgjka`, visits);
   useEffect(() => {
     if (data) set_list(data.countries);
   }, [data]);
 
   return (
     <div>
-      {" "}
       <Form.Group>
         <h5>chose a country:</h5>
 
@@ -55,7 +56,23 @@ export default function AddCountry({ user }) {
           onClick={(e) => {
             console.log(country);
             e.preventDefault();
-            dispatch(addCountry(country));
+            if (
+              visits &&
+              visits.data.map((v) => {
+                return v.countryId === country;
+              })
+            ) {
+              console.log("we have this country already");
+              dispatch(
+                showMessageWithTimeout(
+                  "warning",
+                  true,
+                  "You've already added this country to the map!"
+                )
+              );
+            } else {
+              dispatch(addCountry(country));
+            }
           }}
         >
           Add to my list
