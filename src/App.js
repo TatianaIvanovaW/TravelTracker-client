@@ -6,7 +6,7 @@ import Home from "./pages/home/Home";
 import SignUp from "./pages/SignUp";
 import Login from "./pages/Login";
 import Statistic from "./pages/User/Statistic";
-
+import MessageBox from "./components/MessageBox/index";
 import Country from "./pages/Country";
 import { useDispatch, useSelector } from "react-redux";
 import { selectAppLoading } from "./store/appState/selectors";
@@ -23,6 +23,7 @@ function App() {
   return (
     <div className="App">
       <Navigation />
+      <MessageBox />
       {isLoading ? <Loading /> : null}
       <Switch>
         <Route exact path="/" component={Home} />

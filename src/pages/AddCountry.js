@@ -20,9 +20,12 @@ export default function AddCountry({ user }) {
 
   return (
     <div>
-      <h5>chose a country:</h5>
+      {" "}
       <Form.Group>
+        <h5>chose a country:</h5>
+
         <Form.Control
+          style={{ margin: "15px" }}
           onChange={(e) => set_country(e.target.value)}
           as="select"
           size="lg"
@@ -39,13 +42,23 @@ export default function AddCountry({ user }) {
             : null}
         </Form.Control>
         <Button
+          style={{
+            backgroundColor: "#45cafc",
+            padding: "10px",
+            pddingLeft: "20px",
+            paddingRight: "20px",
+            margin: "10px",
+            outline: "none",
+            borderRadius: "12px",
+            border: "none",
+          }}
           onClick={(e) => {
             console.log(country);
             e.preventDefault();
             dispatch(addCountry(country));
           }}
         >
-          Add
+          Add to my list
         </Button>
       </Form.Group>
     </div>

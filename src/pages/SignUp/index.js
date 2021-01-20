@@ -75,13 +75,15 @@ export default function SignUp() {
               />
               <div className="text-center mt-4">
                 <MDBBtn onClick={submitForm} color="unique" type="submit">
-                  Log In
+                  Sign Up
                 </MDBBtn>
               </div>
             </form>
           </MDBCol>
         </MDBRow>
-        <Link to="/login">Click here to log in</Link>
+        <Link style={{ color: "#85144b" }} to="/login">
+          Click here to log in
+        </Link>
       </MDBContainer>
     </div>
   );

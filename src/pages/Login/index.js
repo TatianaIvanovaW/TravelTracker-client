@@ -69,7 +69,9 @@ export default function SignUp() {
             </form>
           </MDBCol>
         </MDBRow>
-        <Link to="/signup">Click here to sign up</Link>
+        <Link style={{ color: "#85144b" }} to="/signup">
+          Click here to sign up
+        </Link>
       </MDBContainer>
     </div>
   );
