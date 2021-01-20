@@ -8,17 +8,25 @@ import AddCountry from "../AddCountry";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchUserWithCountries } from "../../store/country/action";
 import { selectUserVisits } from "../../store/country/selector";
+import { useHistory } from "react-router-dom";
+import { selectToken } from "../../store/user/selectors";
+
 // import ListVisits from "../../components/List.js";
 
 export default function Statistic() {
   const result = useSelector(selectUserVisits);
+  const token = useSelector(selectToken);
+  const history = useHistory();
 
   const [content, setContent] = useState("");
   const dispatch = useDispatch();
 
   useEffect(() => {
+    if (token === null) {
+      history.push("/");
+    }
     dispatch(fetchUserWithCountries());
-  }, [dispatch]);
+  }, [dispatch, history, token]);
   if (!result.data) return <p>Loading...</p>;
   return (
     <div style={{ marginTop: "15px" }}>

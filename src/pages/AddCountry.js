@@ -56,9 +56,10 @@ export default function AddCountry({ user }) {
           onClick={(e) => {
             console.log(country);
             e.preventDefault();
+
             if (
-              visits &&
-              visits.data.map((v) => {
+              visits.data.find((v) => {
+                console.log(`whaaaat?`, v.countryId, country);
                 return v.countryId === country;
               })
             ) {
