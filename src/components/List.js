@@ -12,6 +12,7 @@ export default function ListVisits({ info }) {
         return c.countryId;
       })
     : null;
+  console.log(info);
   return (
     <div
       style={{
@@ -31,7 +32,7 @@ export default function ListVisits({ info }) {
                   alt="flag"
                   src={flagUrl}
                 />{" "}
-                {c.name}
+                {c.name}{" "}
               </div>
             ) : null;
           })
