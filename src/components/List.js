@@ -1,48 +1,42 @@
 import React from "react";
-import { useRef } from "react";
-import { motion, useCycle } from "framer-motion";
-import useDimensions from "./use-demension.js";
-import MenuToggle from "./MenuToggle";
-import Navigation from "./Navigation1";
-import "./styles.css";
 
-const sidebar = {
-  open: (height = 1000) => ({
-    clipPath: `circle(${height * 2 + 200}px at 40px 40px)`,
-    transition: {
-      type: "spring",
-      stiffness: 20,
-      restDelta: 2,
-    },
-  }),
-  closed: {
-    clipPath: "circle(30px at 40px 40px)",
-    transition: {
-      delay: 0.5,
-      type: "spring",
-      stiffness: 400,
-      damping: 40,
-    },
-  },
-};
+import { ALL_COUNTRIES } from "./graphql/queries";
+import { useSubscription } from "@apollo/react-hooks";
+import { findFlagUrlByIso3Code } from "country-flags-svg";
 
 export default function ListVisits({ info }) {
-  const [isOpen, toggleOpen] = useCycle(false, true);
-  const containerRef = useRef(null);
-  const { height } = useDimensions(containerRef);
+  const { data } = useSubscription(ALL_COUNTRIES);
+  console.log(`fjgkfg`, data);
 
+  const codeList = info
+    ? info.map((c) => {
+        return c.countryId;
+      })
+    : null;
   return (
-    <div>
-      <motion.nav
-        initial={false}
-        animate={isOpen ? "open" : "closed"}
-        custom={height}
-        ref={containerRef}
-      >
-        <motion.div className="background" variants={sidebar} />
-        <Navigation info={info} />
-        <MenuToggle toggle={() => toggleOpen()} />
-      </motion.nav>
+    <div
+      style={{
+        height: "280px",
+        overflowY: "scroll",
+        marginBottom: "20px",
+        textAlign: "left",
+      }}
+    >
+      {data && codeList
+        ? data.countries.map((c, i) => {
+            const flagUrl = findFlagUrlByIso3Code(c.code);
+            return codeList.includes(c.code) ? (
+              <div key={i}>
+                <img
+                  style={{ width: "50px", margin: "10px" }}
+                  alt="flag"
+                  src={flagUrl}
+                />{" "}
+                {c.name}
+              </div>
+            ) : null;
+          })
+        : null}
     </div>
   );
 }

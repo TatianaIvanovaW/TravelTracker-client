@@ -13,6 +13,7 @@
     "apollo-client": "^2.6.10",
     "axios": "^0.21.1",
     "bootstrap": "^4.5.3",
+    "country-flags-svg": "^1.1.0",
     "framer": "^1.2.13",
     "framer-motion": "^3.2.1",
     "graphql": "^15.4.0",

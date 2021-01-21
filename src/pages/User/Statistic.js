@@ -1,6 +1,7 @@
 import React from "react";
 import MapChartUser from "../../components/Map/MapChartUser";
 import "./styles.css";
+import ListVisits from "../../components/List";
 import ReactTooltip from "react-tooltip";
 import { useState, useEffect } from "react";
 import { Col, Row } from "react-bootstrap";
@@ -38,7 +39,8 @@ export default function Statistic() {
                 Visited countries : <b>{result.data.length}</b>
               </p>
             ) : null}
-          </div>
+          </div>{" "}
+          <ListVisits info={result ? result.data : null} />
         </Col>
         <Col sm={6}>
           <MapChartUser
@@ -49,7 +51,6 @@ export default function Statistic() {
           <ReactTooltip>{content}</ReactTooltip>
         </Col>{" "}
       </Row>{" "}
-      {/* <ListVisits info={result ? result.data : null} /> */}
     </div>
   );
 }
