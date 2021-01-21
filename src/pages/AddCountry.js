@@ -39,7 +39,9 @@ export default function AddCountry({ user }) {
         </h5>
         <Form.Control
           style={{ margin: "15px" }}
-          onChange={(e) => set_country(e.target.value)}
+          onChange={(e) => {
+            set_country(e.target.value);
+          }}
           as="select"
           size="lg"
         >
@@ -47,7 +49,7 @@ export default function AddCountry({ user }) {
           {list
             ? list.map((c) => {
                 return (
-                  <option key={c.code} value={c.code}>
+                  <option key={c.code} value={c.id}>
                     {c.name}
                   </option>
                 );
@@ -69,8 +71,8 @@ export default function AddCountry({ user }) {
 
               if (
                 visits.data.find((v) => {
-                  console.log(`whaaaat?`, v.countryId, country);
-                  return v.countryId === country;
+                  console.log(`whaafffffffffaat?`, v.countryId, country);
+                  return v.countryId === parseInt(country);
                 })
               ) {
                 console.log("we have this country already");
@@ -81,7 +83,7 @@ export default function AddCountry({ user }) {
                     "You've already added this country to the map!"
                   )
                 );
-              } else if (!country) {
+              } else if (country === "select") {
                 dispatch(
                   showMessageWithTimeout(
                     "warning",

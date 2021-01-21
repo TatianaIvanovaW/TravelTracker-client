@@ -14,6 +14,7 @@ export const GET_ALL_COUNTRIES = gql`
 export const ALL_COUNTRIES = gql`
   query GetCountries {
     countries {
+      id
       name
       code
     }
