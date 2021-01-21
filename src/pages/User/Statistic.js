@@ -34,9 +34,11 @@ export default function Statistic() {
         <Col sm={4}>
           <AddCountry />
           <div>
-            {result && result.data && result.data.length
-              ? `visited countries : ${result.data.length}`
-              : null}
+            {result && result.data && result.data.length ? (
+              <p>
+                Visited countries : <b>{result.data.length}</b>
+              </p>
+            ) : null}
           </div>
         </Col>
         <Col sm={6}>
