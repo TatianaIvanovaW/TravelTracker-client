@@ -29,6 +29,7 @@ export default function ListVisits({ info }) {
   }
 
   if (codeList) console.log(`whats that????`, codeList);
+
   return (
     <div
       style={{
@@ -48,7 +49,7 @@ export default function ListVisits({ info }) {
                   alt="flag"
                   src={flagUrl}
                 />{" "}
-                {c.name}
+                {c.name}{" "}
               </div>
             ) : null;
           })
