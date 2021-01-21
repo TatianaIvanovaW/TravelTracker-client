@@ -12,17 +12,17 @@ export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
 export const TOKEN_STILL_VALID = "TOKEN_STILL_VALID";
 export const LOG_OUT = "LOG_OUT";
 
-export const loginSuccess = (userWithToken) => {
+const loginSuccess = (userWithToken) => {
   return {
     type: LOGIN_SUCCESS,
     payload: userWithToken,
   };
 };
 
-export const tokenStillValid = (userWithoutToken) => ({
-  type: TOKEN_STILL_VALID,
-  payload: userWithoutToken,
-});
+// const tokenStillValid = (userWithoutToken) => ({
+//   type: TOKEN_STILL_VALID,
+//   payload: userWithoutToken,
+// });
 
 export const logOut = () => ({ type: LOG_OUT });
 
@@ -35,7 +35,7 @@ export const signUp = (name, email, password) => {
         email,
         password,
       });
-
+      console.log(response);
       dispatch(loginSuccess(response.data));
       dispatch(showMessageWithTimeout("success", true, "account created"));
       dispatch(appDoneLoading());
@@ -64,6 +64,8 @@ export const login = (email, password) => {
       dispatch(loginSuccess(response.data));
       dispatch(showMessageWithTimeout("info", false, "Welcome back!", 1500));
       dispatch(appDoneLoading());
+      const token = selectToken(getState());
+      localStorage.setItem("jwt", token);
     } catch (error) {
       if (error.response) {
         console.log(error.response.data.message);
@@ -77,37 +79,37 @@ export const login = (email, password) => {
   };
 };
 
-export const getUserWithStoredToken = () => {
-  return async (dispatch, getState) => {
-    // get token from the state
-    const token = selectToken(getState());
+// export const getUserWithStoredToken = () => {
+//   return async (dispatch, getState) => {
+//     // get token from the state
+//     const token = localStorage.getItem("jwt");
+//     console.log(`fgsjgbstjgstgjsg`, token);
+//     // if we have no token, stop
+//     if (token === null) return;
 
-    // if we have no token, stop
-    if (token === null) return;
+//     dispatch(appLoading());
+//     try {
+//       // if we do have a token,
+//       // check wether it is still valid or if it is expired
+//       const response = await axios.get(`${apiUrl}/me`, {
+//         headers: { Authorization: `Bearer ${token}` },
+//       });
 
-    dispatch(appLoading());
-    try {
-      // if we do have a token,
-      // check wether it is still valid or if it is expired
-      const response = await axios.get(`${apiUrl}/me`, {
-        headers: { Authorization: `Bearer ${token}` },
-      });
+//       dispatch(loginSuccess(response));
 
-      dispatch(loginSuccess(response));
-
-      // token is still valid
-      dispatch(tokenStillValid(response.data));
-      dispatch(appDoneLoading());
-    } catch (error) {
-      if (error.response) {
-        console.log(error.response.message);
-      } else {
-        console.log(error);
-      }
-      // if we get a 4xx or 5xx response,
-      // get rid of the token by logging out
-      dispatch(logOut());
-      dispatch(appDoneLoading());
-    }
-  };
-};
+//       // token is still valid
+//       dispatch(tokenStillValid(response.data));
+//       dispatch(appDoneLoading());
+//     } catch (error) {
+//       if (error.response) {
+//         console.log(error.response.message);
+//       } else {
+//         console.log(error);
+//       }
+//       // if we get a 4xx or 5xx response,
+//       // get rid of the token by logging out
+//       dispatch(logOut());
+//       dispatch(appDoneLoading());
+//     }
+//   };
+// };

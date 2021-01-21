@@ -1,13 +1,12 @@
 import axios from "axios";
-
+import { selectToken } from "../user/selectors";
 import { apiUrl } from "../../config/constants";
-import { showMessageWithTimeout, appDoneLoading } from "../appState/actions";
-import { tokenStillValid, loginSuccess } from "../user/actions";
+import { showMessageWithTimeout } from "../appState/actions";
 
 export const addCountry = (countryCode) => {
   return async (dispatch, getState) => {
     try {
-      const token = localStorage.getItem("jwt");
+      const token = selectToken(getState());
 
       await axios.post(
         `${apiUrl}/add`,
@@ -37,20 +36,15 @@ export function allVisits(user) {
 
 export const fetchUserWithCountries = () => {
   return async (dispatch, getState) => {
-    const token = localStorage.getItem("jwt");
-    console.log(`token?`, token);
-
     try {
+      const token = selectToken(getState());
+      console.log(`token?`, token);
+
       const res = await axios.get(`${apiUrl}/user`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       console.log(`response`, res);
       dispatch(allVisits(res.data));
-      dispatch(loginSuccess(res));
-
-      // token is still valid
-      dispatch(tokenStillValid(res.data));
-      dispatch(appDoneLoading());
     } catch (e) {
       console.log(e.message);
     }

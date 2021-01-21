@@ -10,6 +10,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { fetchUserWithCountries } from "../../store/country/action";
 import { selectUserVisits } from "../../store/country/selector";
 import { useHistory } from "react-router-dom";
+import { selectToken } from "../../store/user/selectors";
 
 // import ListVisits from "../../components/List.js";
 
@@ -17,7 +18,7 @@ export default function Statistic() {
   const result = useSelector(selectUserVisits);
 
   const history = useHistory();
-  const token = localStorage.getItem("jwt");
+  const token = useSelector(selectToken);
   const [content, setContent] = useState("");
   const dispatch = useDispatch();
 
@@ -25,6 +26,7 @@ export default function Statistic() {
     if (token === null) {
       history.push("/");
     }
+
     dispatch(fetchUserWithCountries());
   }, [dispatch, history, token]);
   if (!result.data) return <p>Loading...</p>;

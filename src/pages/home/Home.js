@@ -33,7 +33,7 @@ export default function Home() {
             <b
               style={{
                 fontSize: "20px",
-                fontFamily: "font-family: 'Montserrat', sans-serif;",
+                fontFamily: "Montserrat, sans-serif",
               }}
             >
               <img

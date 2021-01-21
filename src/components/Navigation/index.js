@@ -1,20 +1,20 @@
 import React from "react";
 
 import { NavLink, useLocation } from "react-router-dom";
-import { useDispatch } from "react-redux";
-
+import { useSelector, useDispatch } from "react-redux";
+import { selectToken } from "../../store/user/selectors";
 import "./style.css";
 
 import LoggedIn from "./LoggedIn";
 import LoggedOut from "./LoggedOut";
 // import { useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { getUserWithStoredToken } from "../../store/user/actions";
+import { fetchUserWithCountries } from "../../store/country/action";
 
 import { MDBNav } from "mdbreact";
 
 export default function Navigation() {
-  const token = localStorage.getItem("jwt");
+  const token = useSelector(selectToken);
   const [path, set_path] = useState("");
   const [color, set_color] = useState("blue-gradient");
   // const location = useLocation();
@@ -23,7 +23,7 @@ export default function Navigation() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getUserWithStoredToken());
+    dispatch(fetchUserWithCountries());
     set_path(location.pathname);
 
     if (path === "/login" || path === "/signup") {
