@@ -9,7 +9,7 @@ Screen Recording 2021-01-22 at 01.32.59
 Travel Tracker is an app where you can create your personal travel log and keep track of your visited countries.
 
 Check this out!
-![alt text](#Screen Recording 2021-01-22 at 01.32.59.gif)
+[](Screen Recording 2021-01-22 at 01.32.59.gif)
 
 ## Used technologies
 
@@ -20,7 +20,9 @@ Check this out!
 - Axios
 - Simple Map
 - Appolo Client
-  ###Backend
+
+### Backend
+
 - Node.js
 - GraphQL
 - Appolo Server
