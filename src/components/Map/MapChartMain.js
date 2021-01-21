@@ -62,7 +62,7 @@ const MapChart = ({ setTooltipContent }) => {
                       stroke: "#1E3C00",
                     },
                     pressed: {
-                      fill: "#20B2AA",
+                      fill: "#D6D6DA",
                       outline: "none",
                     },
                   }}
