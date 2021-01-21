@@ -1,7 +1,7 @@
 import React, { memo } from "react";
 import { geoUrl } from "../../config/constants";
 import { ComposableMap, Geographies, Geography } from "react-simple-maps";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { GET_ALL_COUNTRIES } from "../../components/graphql/queries";
 
@@ -32,42 +32,42 @@ const MapChart = ({ setTooltipContent }) => {
         <Geographies geography={geoUrl}>
           {({ geographies }) =>
             geographies.map((geo) => {
-              const { NAME, ISO_A2, ISO_A3 } = geo.properties;
+              const { NAME, /* ISO_A2,*/ ISO_A3 } = geo.properties;
               const visits = array.find((c) => {
                 return c.code === ISO_A3 ? c.visits : null;
               });
               return (
-                <Link key={NAME} to={visits ? `/country/${ISO_A2}` : `/`}>
-                  <Geography
-                    key={geo.rsmKey}
-                    geography={geo}
-                    onMouseEnter={() => {
-                      setTooltipContent(
-                        `${NAME}  👤 
+                // <Link key={NAME} to={visits ? `/country/${ISO_A2}` : `/`}> <<world is not ready for this
+                <Geography
+                  key={geo.rsmKey}
+                  geography={geo}
+                  onMouseEnter={() => {
+                    setTooltipContent(
+                      `${NAME}  👤 
                         
                          ${visits ? visits.visits : "0"}`
-                      );
-                    }}
-                    onMouseLeave={() => {
-                      setTooltipContent("");
-                    }}
-                    style={{
-                      default: {
-                        fill: visits ? "#FFDAB9" : "#D6D6DA",
-                        outline: "none",
-                      },
-                      hover: {
-                        fill: visits ? "#FFDAB9" : "#D6D6DA",
-                        outline: "none",
-                        stroke: "#1E3C00",
-                      },
-                      pressed: {
-                        fill: "#20B2AA",
-                        outline: "none",
-                      },
-                    }}
-                  />
-                </Link>
+                    );
+                  }}
+                  onMouseLeave={() => {
+                    setTooltipContent("");
+                  }}
+                  style={{
+                    default: {
+                      fill: visits ? "#FFDAB9" : "#D6D6DA",
+                      outline: "none",
+                    },
+                    hover: {
+                      fill: visits ? "#FFDAB9" : "#D6D6DA",
+                      outline: "none",
+                      stroke: "#1E3C00",
+                    },
+                    pressed: {
+                      fill: "#20B2AA",
+                      outline: "none",
+                    },
+                  }}
+                />
+                // </Link>
               );
             })
           }
