@@ -2,12 +2,34 @@ import React, { memo } from "react";
 import { geoUrl } from "../../config/constants";
 import { ComposableMap, Geographies, Geography } from "react-simple-maps";
 
+import { ALL_COUNTRIES } from "../graphql/queries";
+import { useSubscription } from "@apollo/react-hooks";
+
 const MapChart = ({ setTooltipContent, list }) => {
+  const { data } = useSubscription(ALL_COUNTRIES);
+
   const countries = list
     ? list.map((c) => {
         return c.countryId;
       })
     : null;
+  const codes =
+    countries && data && list
+      ? data.countries.map((c) => {
+          return countries.includes(c.id) ? c.code : null;
+        })
+      : null;
+  const check =
+    countries && data && list && codes
+      ? codes.filter((c) => {
+          return c;
+        })
+      : null;
+
+  if (data && list && countries && codes) {
+    console.log(`codescodescodes`, check);
+  }
+  if (countries) console.log(`im to the map`, countries);
   return (
     <>
       <ComposableMap data-tip="" projectionConfig={{ scale: 200 }}>
@@ -15,7 +37,7 @@ const MapChart = ({ setTooltipContent, list }) => {
           {({ geographies }) =>
             geographies.map((geo) => {
               const { NAME, ISO_A3 } = geo.properties;
-              const d = countries ? countries.includes(ISO_A3) : null;
+              const d = check ? check.includes(ISO_A3) : null;
               return (
                 <Geography
                   className="country"

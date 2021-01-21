@@ -12,7 +12,24 @@ export default function ListVisits({ info }) {
         return c.countryId;
       })
     : null;
-  console.log(info);
+  const codes =
+    codeList && data
+      ? data.countries.map((c) => {
+          return codeList.includes(c.id) ? c.code : null;
+        })
+      : null;
+  const check = codes
+    ? codes.filter((c) => {
+        return c;
+      })
+    : null;
+
+  if (check) {
+    console.log(`how deep is rabbit hole? `, check);
+  }
+
+  if (codeList) console.log(`whats that????`, codeList);
+
   return (
     <div
       style={{
@@ -25,7 +42,7 @@ export default function ListVisits({ info }) {
       {data && codeList
         ? data.countries.map((c, i) => {
             const flagUrl = findFlagUrlByIso3Code(c.code);
-            return codeList.includes(c.code) ? (
+            return check.includes(c.code) ? (
               <div key={i}>
                 <img
                   style={{ width: "50px", margin: "10px" }}

@@ -10,7 +10,7 @@ import { useSubscription } from "@apollo/react-hooks";
 const MapChart = ({ setTooltipContent }) => {
   const [countries, set_countries] = useState([]);
   const { data } = useSubscription(GET_ALL_COUNTRIES);
-
+  console.log(`countries`, data);
   const [array, set_array] = useState([]);
   useEffect(() => {
     if (data) set_countries(data.countryUsers);
