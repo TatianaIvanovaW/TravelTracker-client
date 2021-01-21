@@ -9,7 +9,7 @@ Screen Recording 2021-01-22 at 01.32.59
 Travel Tracker is an app where you can create your personal travel log and keep track of your visited countries.
 
 Check this out!
-![](Screen Recording 2021-01-22 at 01.32.59.gif)
+![alt text](#Screen Recording 2021-01-22 at 01.32.59.gif)
 
 ## Used technologies
 
