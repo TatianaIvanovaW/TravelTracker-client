@@ -47,7 +47,7 @@ export default function AddCountry({ user }) {
           {list
             ? list.map((c) => {
                 return (
-                  <option key={c.code} value={c.code}>
+                  <option key={c.code} value={c.id}>
                     {c.name}
                   </option>
                 );
