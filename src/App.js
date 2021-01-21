@@ -10,7 +10,7 @@ import MessageBox from "./components/MessageBox/index";
 import Country from "./pages/Country";
 import { useDispatch, useSelector } from "react-redux";
 import { selectAppLoading } from "./store/appState/selectors";
-import { getUserWithStoredToken } from "./store/user/actions";
+import { fetchUserWithCountries } from "./store/country/action";
 import { useEffect } from "react";
 
 function App() {
@@ -18,7 +18,7 @@ function App() {
   const isLoading = useSelector(selectAppLoading);
 
   useEffect(() => {
-    dispatch(getUserWithStoredToken());
+    dispatch(fetchUserWithCountries());
   }, [dispatch]);
   return (
     <div className="App">

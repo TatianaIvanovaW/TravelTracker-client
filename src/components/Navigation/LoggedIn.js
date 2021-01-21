@@ -1,26 +1,27 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import { logOut } from "../../store/user/actions";
+import { NavLink } from "react-router-dom";
 
 export default function LoggedIn() {
   const dispatch = useDispatch();
 
   return (
     <div style={{ color: "black", marginRight: "0", marginLeft: "1050px" }}>
-      <button
+      <NavLink
+        as={NavLink}
+        to="/"
         style={{
-          outline: "none",
-
           margin: "3px",
-
-          backgroundColor: "transparent",
-
+          color: "white",
           border: "none",
         }}
-        onClick={() => dispatch(logOut())}
+        onClick={() => {
+          dispatch(logOut());
+        }}
       >
         Logout
-      </button>
+      </NavLink>
     </div>
   );
 }
