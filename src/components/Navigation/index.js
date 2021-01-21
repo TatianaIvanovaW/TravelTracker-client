@@ -1,8 +1,8 @@
 import React from "react";
 
 import { NavLink, useLocation } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
-import { selectToken } from "../../store/user/selectors";
+import { useDispatch } from "react-redux";
+
 import "./style.css";
 
 import LoggedIn from "./LoggedIn";
@@ -14,7 +14,7 @@ import { getUserWithStoredToken } from "../../store/user/actions";
 import { MDBNav } from "mdbreact";
 
 export default function Navigation() {
-  const token = useSelector(selectToken);
+  const token = localStorage.getItem("jwt");
   const [path, set_path] = useState("");
   const [color, set_color] = useState("blue-gradient");
   // const location = useLocation();

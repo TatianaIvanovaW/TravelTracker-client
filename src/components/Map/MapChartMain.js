@@ -43,7 +43,9 @@ const MapChart = ({ setTooltipContent }) => {
                     geography={geo}
                     onMouseEnter={() => {
                       setTooltipContent(
-                        `${NAME}, visits: ${visits ? visits.visits : "0"}`
+                        `${NAME}  👤 
+                        
+                         ${visits ? visits.visits : "0"}`
                       );
                     }}
                     onMouseLeave={() => {

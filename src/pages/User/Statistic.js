@@ -1,6 +1,7 @@
 import React from "react";
 import MapChartUser from "../../components/Map/MapChartUser";
 import "./styles.css";
+import ListVisits from "../../components/List";
 import ReactTooltip from "react-tooltip";
 import { useState, useEffect } from "react";
 import { Col, Row } from "react-bootstrap";
@@ -8,17 +9,24 @@ import AddCountry from "../AddCountry";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchUserWithCountries } from "../../store/country/action";
 import { selectUserVisits } from "../../store/country/selector";
+import { useHistory } from "react-router-dom";
+
 // import ListVisits from "../../components/List.js";
 
 export default function Statistic() {
   const result = useSelector(selectUserVisits);
 
+  const history = useHistory();
+  const token = localStorage.getItem("jwt");
   const [content, setContent] = useState("");
   const dispatch = useDispatch();
 
   useEffect(() => {
+    if (token === null) {
+      history.push("/");
+    }
     dispatch(fetchUserWithCountries());
-  }, [dispatch]);
+  }, [dispatch, history, token]);
   if (!result.data) return <p>Loading...</p>;
   return (
     <div style={{ marginTop: "15px" }}>
@@ -26,10 +34,13 @@ export default function Statistic() {
         <Col sm={4}>
           <AddCountry />
           <div>
-            {result && result.data && result.data.length
-              ? `visited countries : ${result.data.length}`
-              : null}
-          </div>
+            {result && result.data && result.data.length ? (
+              <p>
+                Visited countries : <b>{result.data.length}</b>
+              </p>
+            ) : null}
+          </div>{" "}
+          <ListVisits info={result ? result.data : null} />
         </Col>
         <Col sm={6}>
           <MapChartUser
@@ -40,7 +51,6 @@ export default function Statistic() {
           <ReactTooltip>{content}</ReactTooltip>
         </Col>{" "}
       </Row>{" "}
-      {/* <ListVisits info={result ? result.data : null} /> */}
     </div>
   );
 }
