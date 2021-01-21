@@ -12,14 +12,14 @@ export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
 export const TOKEN_STILL_VALID = "TOKEN_STILL_VALID";
 export const LOG_OUT = "LOG_OUT";
 
-const loginSuccess = (userWithToken) => {
+export const loginSuccess = (userWithToken) => {
   return {
     type: LOGIN_SUCCESS,
     payload: userWithToken,
   };
 };
 
-const tokenStillValid = (userWithoutToken) => ({
+export const tokenStillValid = (userWithoutToken) => ({
   type: TOKEN_STILL_VALID,
   payload: userWithoutToken,
 });
