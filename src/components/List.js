@@ -6,7 +6,6 @@ import { findFlagUrlByIso3Code } from "country-flags-svg";
 
 export default function ListVisits({ info }) {
   const { data } = useSubscription(ALL_COUNTRIES);
-  console.log(`fjgkfg`, data);
 
   const codeList = info
     ? info.map((c) => {
