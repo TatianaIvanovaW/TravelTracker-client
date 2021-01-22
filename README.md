@@ -1,5 +1,3 @@
-Screen Recording 2021-01-22 at 01.32.59
-
 # Travel Tracker
 
 ## What is this app about?
