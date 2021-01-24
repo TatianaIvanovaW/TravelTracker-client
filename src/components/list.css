@@ -1,0 +1,12 @@
+.click {
+  background-color: white;
+  border: none;
+  outline: none;
+  color: #dc143c;
+  font-size: 14px;
+}
+
+.click:hover {
+  color: #8b0000;
+  outline: none;
+}

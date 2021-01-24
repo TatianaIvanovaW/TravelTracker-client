@@ -5,6 +5,7 @@ import { useSubscription } from "@apollo/react-hooks";
 import { findFlagUrlByIso3Code } from "country-flags-svg";
 import { deleteVisit } from "../store/country/action";
 import { useDispatch } from "react-redux";
+import "./list.css";
 
 export default function ListVisits({ info }) {
   const { data } = useSubscription(ALL_COUNTRIES);
@@ -47,18 +48,23 @@ export default function ListVisits({ info }) {
             return check.includes(c.code) ? (
               <div key={i}>
                 <img
-                  style={{ width: "50px", margin: "10px" }}
+                  style={{
+                    width: "50px",
+                    margin: "10px",
+                    marginBottom: "20px",
+                  }}
                   alt="flag"
                   src={flagUrl}
                 />{" "}
-                {c.name}{" "}
+                <span style={{ marginBottom: "20px" }}>{c.name}</span>{" "}
                 <button
+                  className="click"
                   onClick={() => {
                     dispatch(deleteVisit(c.id));
                     console.log("click", c.id);
                   }}
                 >
-                  delete country
+                  ⓧ
                 </button>{" "}
               </div>
             ) : null;
