@@ -3,10 +3,12 @@ import React from "react";
 import { ALL_COUNTRIES } from "./graphql/queries";
 import { useSubscription } from "@apollo/react-hooks";
 import { findFlagUrlByIso3Code } from "country-flags-svg";
+// import { deleteVisit } from "../store/country/action";
+// import { useDispatch } from "react-redux";
 
 export default function ListVisits({ info }) {
   const { data } = useSubscription(ALL_COUNTRIES);
-
+  // const dispatch = useDispatch();
   const codeList = info
     ? info.map((c) => {
         return c.countryId;
@@ -50,6 +52,13 @@ export default function ListVisits({ info }) {
                   src={flagUrl}
                 />{" "}
                 {c.name}{" "}
+                <button
+                  onClick={() => {
+                    console.log("click", c.id);
+                  }}
+                >
+                  delete country
+                </button>{" "}
               </div>
             ) : null;
           })

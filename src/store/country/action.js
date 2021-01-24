@@ -51,17 +51,17 @@ export const fetchUserWithCountries = () => {
   };
 };
 
-// export const removeCountry = (id) => {
-//   return async (dispatch, getState) => {
-//     try {
-//       const token = selectToken(getState());
-//       console.log(`token should be here`, token);
-//       await axios.delete(`${apiUrl}/visit/${id}`, {
-//         headers: { Authorization: `Bearer ${token}` },
-//       });
-//       dispatch(fetchUserWithCountries());
-//     } catch (e) {
-//       console.log(e.message);
-//     }
-//   };
-// }; <<add in the future
+export const deleteVisit = (id) => {
+  return async (dispatch, getState) => {
+    try {
+      const token = selectToken(getState());
+
+      await axios.delete(`${apiUrl}/visit/${id}`, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+      dispatch(fetchUserWithCountries());
+    } catch (e) {
+      console.log(e.message);
+    }
+  };
+};
