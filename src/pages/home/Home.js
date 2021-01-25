@@ -4,8 +4,9 @@ import { Col, Row } from "react-bootstrap";
 import { selectUserName } from "../../store/user/selectors";
 import { useSelector, useDispatch } from "react-redux";
 import { useState } from "react";
-
+// import { ALL_USERS } from "../../components/graphql/userquery";
 import { showMessageWithTimeout } from "../../store/appState/actions";
+// import { useSubscription } from "@apollo/react-hooks";
 
 import "./styles.css";
 
@@ -21,6 +22,10 @@ export default function Home() {
     navigator.clipboard.writeText("https://traveltracker.netlify.app");
     dispatch(showMessageWithTimeout("success", true, "Link copied!"));
   };
+
+  // const { data } = useSubscription(ALL_USERS);
+  // if (data) console.log(`useeeeeeeers`, data);
+
   return (
     <div style={{ marginTop: "20px" }}>
       <Row>
