@@ -1,17 +1,14 @@
 import React from "react";
-
+import LoggedIn from "./LoggedIn";
+import LoggedOut from "./LoggedOut";
+import { useEffect, useState } from "react";
 import { NavLink, useLocation } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { selectToken } from "../../store/user/selectors";
-import "./style.css";
-
-import LoggedIn from "./LoggedIn";
-import LoggedOut from "./LoggedOut";
-// import { useLocation } from "react-router-dom";
-import { useEffect, useState } from "react";
 import { fetchUserWithCountries } from "../../store/country/action";
-
 import { MDBNav } from "mdbreact";
+import { Col, Row } from "react-bootstrap";
+import "./style.css";
 
 export default function Navigation() {
   const token = useSelector(selectToken);
@@ -48,21 +45,45 @@ export default function Navigation() {
         color={color}
         className="font-weight-bold"
       >
-        <NavLink style={{ margin: "10px", color: "black" }} as={NavLink} to="/">
-          Travel Tracker
-        </NavLink>
-
-        {token ? (
+        <Col sm={2}>
+          {" "}
           <NavLink
             style={{ margin: "10px", color: "black" }}
             as={NavLink}
-            to="/user"
+            to="/"
           >
-            My profile
+            Travel Tracker
           </NavLink>
-        ) : null}
-
-        {loginLogoutControls}
+        </Col>
+        <Col md={{ span: 6, offset: 4 }} style={{ textAlign: "right" }}>
+          <Row>
+            <Col>
+              {" "}
+              {token ? (
+                <NavLink
+                  style={{ margin: "10px", color: "black" }}
+                  as={NavLink}
+                  to="/user"
+                >
+                  My map
+                </NavLink>
+              ) : null}
+            </Col>
+            <Col>
+              {" "}
+              {token ? (
+                <NavLink
+                  style={{ margin: "10px", color: "black" }}
+                  as={NavLink}
+                  to="/account"
+                >
+                  My account
+                </NavLink>
+              ) : null}
+            </Col>
+            <Col>{loginLogoutControls}</Col>{" "}
+          </Row>
+        </Col>
       </MDBNav>
     </div>
   );
