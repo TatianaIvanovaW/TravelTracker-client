@@ -7,7 +7,7 @@ export default function LoggedIn() {
   const dispatch = useDispatch();
 
   return (
-    <div style={{ color: "black", marginRight: "0", marginLeft: "1050px" }}>
+    <div style={{ color: "black" }}>
       <NavLink
         as={NavLink}
         to="/"
