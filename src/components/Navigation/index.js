@@ -71,7 +71,7 @@ export default function Navigation() {
             </Col>
             <Col>
               {" "}
-              {token ? (
+              {/* {token ? (
                 <NavLink
                   style={{ margin: "10px", color: "black" }}
                   as={NavLink}
@@ -79,7 +79,7 @@ export default function Navigation() {
                 >
                   My account
                 </NavLink>
-              ) : null}
+              ) : null} */}
             </Col>
             <Col>{loginLogoutControls}</Col>{" "}
           </Row>
