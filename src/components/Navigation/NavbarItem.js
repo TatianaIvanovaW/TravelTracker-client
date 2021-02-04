@@ -6,11 +6,7 @@ export default function NavbarItem(props) {
   return (
     <Nav.Item>
       <b>
-        <Nav.Link
-          style={{ color: "black", marginRight: "0" }}
-          as={NavLink}
-          to={props.path}
-        >
+        <Nav.Link style={{ color: "black" }} as={NavLink} to={props.path}>
           {props.linkText}
         </Nav.Link>
       </b>
