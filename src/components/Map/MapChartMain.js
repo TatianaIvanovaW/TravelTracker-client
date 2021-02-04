@@ -13,16 +13,14 @@ const MapChart = ({ setTooltipContent }) => {
   console.log(`countries`, data);
   const [array, set_array] = useState([]);
   useEffect(() => {
-    if (data) set_countries(data.countryUsers);
+    set_countries(data?.countryUsers);
 
-    const newArray = countries
-      ? countries.map((country) => {
-          return {
-            code: country.code,
-            visits: country.users.length,
-          };
-        })
-      : null;
+    const newArray = countries?.map((country) => {
+      return {
+        code: country.code,
+        visits: country.users.length,
+      };
+    });
 
     set_array(newArray);
   }, [countries, data]);
@@ -33,7 +31,7 @@ const MapChart = ({ setTooltipContent }) => {
           {({ geographies }) =>
             geographies.map((geo) => {
               const { NAME, /* ISO_A2,*/ ISO_A3 } = geo.properties;
-              const visits = array.find((c) => {
+              const visits = array?.find((c) => {
                 return c.code === ISO_A3 ? c.visits : null;
               });
               return (

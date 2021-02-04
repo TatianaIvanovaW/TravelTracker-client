@@ -10,28 +10,16 @@ import "./list.css";
 export default function ListVisits({ info }) {
   const { data } = useSubscription(ALL_COUNTRIES);
   const dispatch = useDispatch();
-  const codeList = info
-    ? info.map((c) => {
-        return c.countryId;
-      })
-    : null;
-  const codes =
-    codeList && data
-      ? data.countries.map((c) => {
-          return codeList.includes(c.id) ? c.code : null;
-        })
-      : null;
-  const check = codes
-    ? codes.filter((c) => {
-        return c;
-      })
-    : null;
+  const codeList = info?.map((c) => {
+    return c.countryId;
+  });
+  const codes = data?.countries?.map((c) => {
+    return codeList?.includes(c.id) ? c.code : null;
+  });
 
-  if (check) {
-    console.log(`how deep is rabbit hole? `, check);
-  }
-
-  if (codeList) console.log(`whats that????`, codeList);
+  const check = codes?.filter((c) => {
+    return c;
+  });
 
   return (
     <div
@@ -42,34 +30,36 @@ export default function ListVisits({ info }) {
         textAlign: "left",
       }}
     >
-      {data && codeList
-        ? data.countries.map((c, i) => {
-            const flagUrl = findFlagUrlByIso3Code(c.code);
-            return check.includes(c.code) ? (
-              <div key={i}>
-                <img
-                  style={{
-                    width: "50px",
-                    margin: "10px",
-                    marginBottom: "20px",
-                  }}
-                  alt="flag"
-                  src={flagUrl}
-                />{" "}
-                <span style={{ marginBottom: "20px" }}>{c.name}</span>{" "}
-                <button
-                  className="click"
-                  onClick={() => {
-                    dispatch(deleteVisit(c.id));
-                    console.log("click", c.id);
-                  }}
-                >
-                  ⓧ
-                </button>{" "}
-              </div>
-            ) : null;
-          })
-        : null}
+      {data?.countries.map((c, i) => {
+        const flagUrl = findFlagUrlByIso3Code(c.code);
+        return check?.includes(c.code) ? (
+          <div key={i}>
+            <img
+              style={{
+                width: "50px",
+                margin: "10px",
+                marginBottom: "20px",
+              }}
+              alt="flag"
+              src={
+                c.code !== "ATA"
+                  ? flagUrl
+                  : "https://img.icons8.com/ultraviolet/40/000000/flag.png"
+              }
+            />
+            <span style={{ marginBottom: "20px" }}>{c.name}</span>{" "}
+            <button
+              className="click"
+              onClick={() => {
+                dispatch(deleteVisit(c.id));
+                console.log("click", c.id);
+              }}
+            >
+              ⓧ
+            </button>{" "}
+          </div>
+        ) : null;
+      })}
     </div>
   );
 }

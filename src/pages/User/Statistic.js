@@ -22,8 +22,6 @@ export default function Statistic() {
   const [content, setContent] = useState("");
   const dispatch = useDispatch();
 
-  if (result) console.log(`result`, result.data);
-
   useEffect(() => {
     if (token === null) {
       history.push("/");
@@ -38,19 +36,14 @@ export default function Statistic() {
         <Col sm={4}>
           <AddCountry />
           <div>
-            {result && result.data && result.data.length ? (
-              <p>
-                Visited countries : <b>{result.data.length}</b>
-              </p>
-            ) : null}
-          </div>{" "}
-          <ListVisits info={result ? result.data : null} />
+            <p>
+              Visited countries : <b>{result?.data?.length}</b>
+            </p>
+          </div>
+          <ListVisits info={result?.data} />
         </Col>
         <Col sm={6}>
-          <MapChartUser
-            list={result ? result.data : null}
-            setTooltipContent={setContent}
-          />
+          <MapChartUser list={result?.data} setTooltipContent={setContent} />
 
           <ReactTooltip>{content}</ReactTooltip>
         </Col>{" "}
