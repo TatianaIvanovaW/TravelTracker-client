@@ -34,9 +34,9 @@ export default function Home() {
             Welcome, {name ? name : "Traveler"} !
           </h4>
           <p>
-            Ever wanted to show off with your travel? Look no further! With the
+            Ever wanted to show off your travel? Look no further! With the
             travel tracker app you can create your personal travel log and keep
-            track of your visited countries.
+            track of the countries you have visited
           </p>
           <ul style={{ listStyleType: "none" }}>
             <li>
