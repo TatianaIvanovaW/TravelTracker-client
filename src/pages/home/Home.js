@@ -29,8 +29,24 @@ export default function Home() {
   return (
     <div style={{ marginTop: "20px" }}>
       <Row>
-        <Col style={{ textAlign: "left", marginLeft: "20px" }} sm={4}>
-          <h4 style={{ textAlign: "center", marginBottom: "25px" }}>
+        <Col
+          style={{
+            textAlign: "left",
+            marginLeft: "30px",
+            backgroundColor: "rgba(255, 255, 255, 0.7)",
+            height: "550px",
+            marginTop: "0.7%",
+            boxShadow: "3px 3px 20px 3px #888888",
+          }}
+          sm={4}
+        >
+          <h4
+            style={{
+              textAlign: "center",
+              marginBottom: "25px",
+              marginTop: "20px",
+            }}
+          >
             Welcome, {name ? name : "Traveler"} !
           </h4>
           <p>
