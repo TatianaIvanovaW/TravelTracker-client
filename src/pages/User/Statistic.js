@@ -20,8 +20,6 @@ export default function Statistic() {
   const [content, setContent] = useState("");
   const dispatch = useDispatch();
 
-  if (result) console.log(`result`, result.data);
-
   useEffect(() => {
     if (token === null) {
       history.push("/");

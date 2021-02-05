@@ -18,7 +18,7 @@ export default function AddCountry({ user }) {
   const visits = useSelector(selectUserVisits);
 
   useEffect(() => {
-    if (data) set_list(data.countries);
+    set_list(data?.countries);
   }, [data]);
 
   return (
@@ -46,15 +46,13 @@ export default function AddCountry({ user }) {
           size="lg"
         >
           <option value="select">Select</option>
-          {list
-            ? list.map((c) => {
-                return (
-                  <option key={c.code} value={c.id}>
-                    {c.name}
-                  </option>
-                );
-              })
-            : null}
+          {list?.map((c) => {
+            return (
+              <option key={c.code} value={c.id}>
+                {c.name}
+              </option>
+            );
+          })}
         </Form.Control>
         <motion.div whileHover={{ scale: 1.2 }} whileTap={{ scale: 0.8 }}>
           <button
@@ -66,16 +64,13 @@ export default function AddCountry({ user }) {
               padding: "0",
             }}
             onClick={(e) => {
-              console.log(`djfhkghskfghsfg`, country);
               e.preventDefault();
 
               if (
                 visits.data.find((v) => {
-                  console.log(`whaafffffffffaat?`, v.countryId, country);
                   return v.countryId === parseInt(country);
                 })
               ) {
-                console.log("we have this country already");
                 dispatch(
                   showMessageWithTimeout(
                     "warning",

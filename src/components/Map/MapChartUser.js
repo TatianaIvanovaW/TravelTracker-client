@@ -8,28 +8,18 @@ import { useSubscription } from "@apollo/react-hooks";
 const MapChart = ({ setTooltipContent, list }) => {
   const { data } = useSubscription(ALL_COUNTRIES);
 
-  const countries = list
-    ? list.map((c) => {
-        return c.countryId;
-      })
-    : null;
-  const codes =
-    countries && data && list
-      ? data.countries.map((c) => {
-          return countries.includes(c.id) ? c.code : null;
-        })
-      : null;
-  const check =
-    countries && data && list && codes
-      ? codes.filter((c) => {
-          return c;
-        })
-      : null;
+  const countries = list?.map((c) => {
+    return c.countryId;
+  });
 
-  if (data && list && countries && codes) {
-    console.log(`codescodescodes`, check);
-  }
-  if (countries) console.log(`im to the map`, countries);
+  const codes = data?.countries?.map((c) => {
+    return countries?.includes(c.id) ? c.code : null;
+  });
+
+  const check = codes?.filter((c) => {
+    return c;
+  });
+
   return (
     <>
       <ComposableMap
@@ -43,7 +33,7 @@ const MapChart = ({ setTooltipContent, list }) => {
           {({ geographies }) =>
             geographies.map((geo) => {
               const { NAME, ISO_A3 } = geo.properties;
-              const d = check ? check.includes(ISO_A3) : null;
+              const d = check?.includes(ISO_A3);
               return (
                 <Geography
                   className="country"
