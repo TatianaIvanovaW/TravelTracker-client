@@ -12,8 +12,6 @@ import { selectUserVisits } from "../../store/country/selector";
 import { useHistory } from "react-router-dom";
 import { selectToken } from "../../store/user/selectors";
 
-// import ListVisits from "../../components/List.js";
-
 export default function Statistic() {
   const result = useSelector(selectUserVisits);
 
@@ -28,33 +26,37 @@ export default function Statistic() {
     if (token === null) {
       history.push("/");
     }
-
     dispatch(fetchUserWithCountries());
   }, [dispatch, history, token]);
   if (!result.data) return <p>Loading...</p>;
   return (
     <div style={{ marginTop: "15px" }}>
       <Row>
-        <Col sm={4}>
+        <Col
+          style={{
+            backgroundColor: "rgba(255, 255, 255, 0.7)",
+            textAlign: "center",
+            marginLeft: "30px",
+            height: "550px",
+            marginTop: "0.7%",
+            boxShadow: "3px 3px 20px 3px #888888",
+          }}
+          sm={4}
+        >
           <AddCountry />
           <div>
-            {result && result.data && result.data.length ? (
-              <p>
-                Visited countries : <b>{result.data.length}</b>
-              </p>
-            ) : null}
-          </div>{" "}
-          <ListVisits info={result ? result.data : null} />
+            <p>
+              Visited countries : <b>{result?.data?.length}</b>
+            </p>
+          </div>
+          <ListVisits info={result?.data} />
         </Col>
         <Col sm={6}>
-          <MapChartUser
-            list={result ? result.data : null}
-            setTooltipContent={setContent}
-          />
+          <MapChartUser list={result?.data} setTooltipContent={setContent} />
 
           <ReactTooltip>{content}</ReactTooltip>
-        </Col>{" "}
-      </Row>{" "}
+        </Col>
+      </Row>
     </div>
   );
 }

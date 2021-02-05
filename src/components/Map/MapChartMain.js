@@ -28,7 +28,13 @@ const MapChart = ({ setTooltipContent }) => {
   }, [countries, data]);
   return (
     <>
-      <ComposableMap data-tip="" projectionConfig={{ scale: 200 }}>
+      <ComposableMap
+        data-tip=""
+        projectionConfig={{ scale: 195 }}
+        style={{
+          backgroundColor: "rgba(255, 255, 255, 0.9)",
+        }}
+      >
         <Geographies geography={geoUrl}>
           {({ geographies }) =>
             geographies.map((geo) => {
@@ -53,7 +59,7 @@ const MapChart = ({ setTooltipContent }) => {
                   }}
                   style={{
                     default: {
-                      fill: visits ? "#FFDAB9" : "#D6D6DA",
+                      fill: visits ? "#FFDAB9" : "rgba(189, 195, 199, 1)",
                       outline: "none",
                     },
                     hover: {

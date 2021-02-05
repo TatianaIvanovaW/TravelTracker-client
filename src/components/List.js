@@ -36,10 +36,10 @@ export default function ListVisits({ info }) {
   return (
     <div
       style={{
-        height: "280px",
         overflowY: "scroll",
         marginBottom: "20px",
         textAlign: "left",
+        height: "230px",
       }}
     >
       {data && codeList

@@ -34,11 +34,21 @@ export default function SignUp() {
   return (
     <div>
       {" "}
-      <MDBContainer>
+      <MDBContainer
+        style={{
+          backgroundColor: "rgba(255, 255, 255, 0.7)",
+          boxShadow: "3px 3px 20px 3px #888888",
+          borderRadius: "12px",
+        }}
+      >
         <MDBRow style={{ margin: "50px", justifyContent: "center" }}>
           <MDBCol md="6">
             <form>
-              <label htmlFor="defaultFormRegisterEmailEx" className="grey-text">
+              <label
+                htmlFor="defaultFormRegisterEmailEx"
+                className="grey-text"
+                style={{ marginTop: "12px" }}
+              >
                 Your name
               </label>
               <input

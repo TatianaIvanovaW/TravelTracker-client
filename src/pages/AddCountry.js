@@ -23,12 +23,12 @@ export default function AddCountry({ user }) {
 
   return (
     <div>
-      <Form.Group>
+      <Form.Group style={{ marginRight: "30px" }}>
         <h5>
           <img
             style={{
               margin: "4px",
-
+              marginTop: "13px",
               marginBottom: "13px",
               width: "40px",
             }}
@@ -59,7 +59,7 @@ export default function AddCountry({ user }) {
         <motion.div whileHover={{ scale: 1.2 }} whileTap={{ scale: 0.8 }}>
           <button
             style={{
-              backgroundColor: "white",
+              backgroundColor: "rgba(255, 255, 255, 0)",
               outline: "none",
               borderRadius: "50%",
               border: "none",

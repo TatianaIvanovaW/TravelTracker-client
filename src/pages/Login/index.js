@@ -32,10 +32,16 @@ export default function SignUp() {
 
   return (
     <div>
-      <MDBContainer>
+      <MDBContainer
+        style={{
+          backgroundColor: "rgba(255, 255, 255, 0.7)",
+          boxShadow: "3px 3px 20px 3px #888888",
+          borderRadius: "12px",
+        }}
+      >
         <MDBRow style={{ margin: "50px", justifyContent: "center" }}>
           <MDBCol md="6">
-            <form>
+            <form style={{ marginTop: "20px" }}>
               <label htmlFor="defaultFormRegisterEmailEx" className="grey-text">
                 Your email
               </label>
@@ -69,7 +75,7 @@ export default function SignUp() {
             </form>
           </MDBCol>
         </MDBRow>
-        <Link style={{ color: "#85144b" }} to="/signup">
+        <Link style={{ color: "#85144b", paddingBottom: "12px" }} to="/signup">
           Click here to sign up
         </Link>
       </MDBContainer>
