@@ -9,6 +9,7 @@ import Statistic from "./pages/User/Statistic";
 import MessageBox from "./components/MessageBox/index";
 import Country from "./pages/Country";
 import Profile from "./pages/Profile/Profile";
+import UserPage from "./pages/User Page/UserPage";
 import { useDispatch, useSelector } from "react-redux";
 import { selectAppLoading } from "./store/appState/selectors";
 import { fetchUserWithCountries } from "./store/country/action";
@@ -30,6 +31,7 @@ function App() {
         <Route exact path="/" component={Home} />
         <Route path="/signup" component={SignUp} />
         <Route path="/login" component={Login} />
+        <Route path="/user/:id" component={UserPage} />
         <Route path="/user" component={Statistic} />
         <Route path="/account" component={Profile} />
         <Route path="/country/:id" component={Country} />
