@@ -11,7 +11,7 @@ const MapChart = ({ setTooltipContent, list }) => {
   const countries = list?.map((c) => {
     return c.countryId;
   });
-
+  // check all stages !! pass only list of codes if it's possible
   const codes = data?.countries?.map((c) => {
     return countries?.includes(c.id) ? c.code : null;
   });

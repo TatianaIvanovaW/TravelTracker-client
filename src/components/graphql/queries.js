@@ -21,14 +21,3 @@ export const ALL_COUNTRIES = gql`
     }
   }
 `; // << for all countries
-
-//  const { data } = useQuery(gql`
-//     query GetUser {
-//       user(id: ${user.id}) {
-//         countries {
-//           name
-//           code
-//         }
-//       }
-//     }
-//   `); //<<for one user with id

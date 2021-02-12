@@ -27,6 +27,7 @@ export default function Statistic() {
     dispatch(fetchUserWithCountries());
   }, [dispatch, history, token]);
   if (!result.data) return <p>Loading...</p>;
+  console.log(result?.data, `-----resul data`);
   return (
     <div style={{ marginTop: "15px" }}>
       <Row>
