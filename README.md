@@ -7,7 +7,7 @@
 Travel Tracker is an app where you can create your personal travel log and keep track of your visited countries.
 
 Check this out!
-![](demo.gif)
+![](demo1.gif)
 
 ## Used technologies
 
