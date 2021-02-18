@@ -41,7 +41,6 @@ Check this out!
 **User Story/Home page**
 As a user I want to see a map where I can see how many people visited chosen country
 
-- [x] 'Home' in a navbar at the top of the page links to /
 - [x] map displayed on the route /
 - [x] hover effect for countries
 - [x] endpoint for an amount of visitors for each country
